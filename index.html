@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Nexel Worlds: looks to pick</title>
+<style>
+@font-face { font-family: SproutPixel; src: url(sprout-pixel.ttf); }
+* { box-sizing:border-box; }
+body { margin:0; padding:24px 16px 80px; background:#2b2320; color:#f3dfba; font-family:SproutPixel, monospace; font-size:18px; line-height:24px; }
+h1, h2, p, .grid, .one { max-width:1296px; margin:0 auto; } h1 { font-size:36px; line-height:44px; font-weight:normal; } h2 { font-size:28px; line-height:36px; font-weight:normal; margin-top:40px; }
+p { color:#c9b089; margin-top:8px; } p b { color:#f3dfba; font-weight:normal; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(420px, 1fr)); gap:16px 16px; margin-top:16px; }
+figure { margin:0; } img { width:100%; display:block; border:3px solid #5b3f36; border-radius:4px; image-rendering:pixelated; }
+.one img { margin-top:16px; }
+figcaption { font-size:22px; line-height:28px; margin-top:6px; } figcaption span { display:block; font-size:18px; line-height:24px; color:#c9b089; }
+</style></head><body>
+<h1>Two things to look at</h1>
+<p><b>1. Your staircase under ground</b> (where you stood in your screenshot). 0 is the game today. 1 opens only round you. 2 lights the floors toward the way out, so up reads as toward the light. 3 darkens what is far from you. 4 mixes 1 and 2: the stair up to the meadow stays open and lit, the deep part behind you closes.</p>
+<p><b>My honest view: none of them is good enough yet.</b> 4 is the clearest, but the tall flat wall behind you stays. The real cause: your stair climbs east, so each riser faces west, and this camera sees a west face as a 2 px line. A step can only read as a step if its riser shows. Tell me if 4 is the right direction, or if you want something bigger (for example, risers that face sideways drawn as visible faces).</p>
+<img src="pick_under.png" alt="Your staircase: today, 1, 2, 3, 4" style="max-width:1296px;margin:16px auto 0">
+<p style="margin-top:32px"><b>2. The mountain near the horizon.</b> 0 today: the top terraces squeeze into a thin grey band. 1 keeps far rows thicker. 2 makes high land count as nearer, so the mountain climbs the picture (it covers the sky). 3 is both: the mountain stands taller, each step stays distinct, and the sky stays. My pick: 3.</p>
+<img src="pick_horizon.png" alt="The mountain near the horizon: today, 1, 2, 3" style="max-width:1296px;margin:16px auto 0">
+<h1 style="margin-top:64px">Already picked, in pictures</h1>
+<p>You picked: the land's light (1 + 2 + 3), the side of a block (4), water you can see through (10). Below is what they look like, real pictures of the game. <b>In the game</b> means reload and you have it; <b>coming</b> means built, being checked.</p>
+<h2>Coming: your stone mountain (the fourth review: "flat from west, north and north-west")</h2>
+<p>Left: the game today. Right: built, being tested. Each level of stone has its own tone on top (darker low, as the pack paints it high), a band of shade at the foot of each step, a darker rim where a top drops. Walls are one even face at every hour: they take no cast shadow any more (four tries each drew wedges or squares on your canyon wall).</p>
+<div class="one"><img src="soon/mountain.png" alt="The mountain from four sides, before and after"></div>
+<h2>In the game: the canyon wall you sent ("this wall look so weird")</h2>
+<p>Left: the game today. Right: the same wall as it is in the game now. Morning, noon, evening, and noon with the Natural shader. One rock from rim to foot, no squares; the water is the one you picked.</p>
+<div class="one"><img src="soon/wall.png" alt="The canyon wall, before and after"></div>
+<h2>In the game: the side of a block (4)</h2>
+<div class="grid">
+<figure><img src="soon/side_blocks.png" alt="Blocks with the thin side" loading="lazy"><figcaption>Blocks, a pillar, pits, stairs<span>Straight thin sides, one earth colour from top to foot, small flat caps on one-tile tops.</span></figcaption></figure>
+<figure><img src="soon/side_pillar.png" alt="A pillar and a stair, close up" loading="lazy"><figcaption>A pillar and a stair, close up</figcaption></figure>
+<figure><img src="soon/side_mountain.png" alt="Your mountain with the thin side" loading="lazy"><figcaption>Your mountain's edge<span>Stone over earth as one level line. The diagonal canyon wall you sent is being cleaned up on top of this.</span></figcaption></figure>
+<figure><img src="soon/side_house.png" alt="A house on a plateau" loading="lazy"><figcaption>A house on a plateau</figcaption></figure>
+</div>
+<h2>In the game: terraces cast shadows, a cut reads as a cut</h2>
+<div class="grid">
+<figure><img src="soon/terraces.png" alt="Terraces at evening" loading="lazy"><figcaption>Your mountain at evening<span>Every one-level step throws its shadow.</span></figcaption></figure>
+<figure><img src="soon/cut.png" alt="Three cuts" loading="lazy"><figcaption>Behind a plateau, behind a stone hill, under a slab<span>Only your own column is opened, with dark earth sides.</span></figcaption></figure>
+</div>
+<h1 style="margin-top:64px">In the game: water you can see through (10)</h1>
+<p><b>Look at the lake.</b> 0 is the game today. In 7 the bed is real blocks under the water: sand steps down from the bank and the water gets deeper blue over it. 8 adds the bed shifting a pixel under the ripple, 9 light lines and the lily pad's shade on the bed, 10 is my pick of them (clear near you, less clear far away). 7 to 10 differ little in a still picture: the step that matters is 0 to 7.</p>
+<p>It is stepped, as the land is: a pond goes down a level at a time from its bank. Not in the game.</p>
+<div class="one"><img src="pick_water.png" alt="The lake: today, 7, 8, 9, 10"></div>
+<h2>Today and 10 on other places</h2>
+<div class="grid">
+<figure><img src="water/A2_0.png" alt="today" loading="lazy"><figcaption>0 · Today<span>A pond, standing at its edge</span></figcaption></figure>
+<figure><img src="water/A2_10.png" alt="10" loading="lazy"><figcaption>10<span>A pond, standing at its edge</span></figcaption></figure>
+<figure><img src="water/A_0.png" alt="today" loading="lazy"><figcaption>0 · Today<span>The pond, swimming</span></figcaption></figure>
+<figure><img src="water/A_10.png" alt="10" loading="lazy"><figcaption>10<span>The pond, swimming</span></figcaption></figure>
+<figure><img src="water/D_0.png" alt="today" loading="lazy"><figcaption>0 · Today<span>The sea, shallow to deep</span></figcaption></figure>
+<figure><img src="water/D_10.png" alt="10" loading="lazy"><figcaption>10<span>The sea, shallow to deep</span></figcaption></figure>
+<figure><img src="water/C_0.png" alt="today" loading="lazy"><figcaption>0 · Today<span>The river in the canyon (the weakest: murky in the cliff's shade)</span></figcaption></figure>
+<figure><img src="water/C_10.png" alt="10" loading="lazy"><figcaption>10<span>The river in the canyon (the weakest: murky in the cliff's shade)</span></figcaption></figure>
+<figure><img src="water/E_0.png" alt="today" loading="lazy"><figcaption>0 · Today<span>A flooded hole and a pond on a plateau</span></figcaption></figure>
+<figure><img src="water/E_10.png" alt="10" loading="lazy"><figcaption>10<span>A flooded hole and a pond on a plateau</span></figcaption></figure>
+</div>
+<h2>10 with the Natural shader, at night, and far away at evening</h2>
+<div class="grid">
+<figure><img src="water/B_10n.png" alt="Natural shader" loading="lazy"><figcaption>Natural shader</figcaption></figure>
+<figure><img src="water/B_10night.png" alt="Night" loading="lazy"><figcaption>Night</figcaption></figure>
+<figure><img src="water/F_10.png" alt="Far away, evening" loading="lazy"><figcaption>Far away, evening</figcaption></figure>
+</div>
+<p style="margin-top:40px">Picked already: the land's light (1 + 2 + 3, in the game), the side of a block (4, landing).</p>
+</body></html>
