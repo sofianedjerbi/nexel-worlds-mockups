@@ -16,7 +16,8 @@ figcaption { font-size:22px; line-height:28px; margin-top:6px; } figcaption span
 .tag.b { background:#c9b089; color:#2b2320; } .tag.a { background:#8fc06a; color:#2b2320; }
 .wide { display:block; } .wide img { margin-top:8px; }
 details { max-width:1296px; margin:96px auto 0; } summary { font-size:28px; cursor:pointer; color:#c9b089; }
-@media (max-width:700px) { .ba { grid-template-columns:1fr; } }
+figure { min-width:0; } img { max-width:100%; } .grid { grid-template-columns:repeat(auto-fit, minmax(min(420px, 100%), 1fr)); } h1, h2, p { overflow-wrap:anywhere; }
+@media (max-width:700px) { .ba { grid-template-columns:1fr; } h1 { font-size:26px; line-height:32px; } h2 { font-size:22px; line-height:28px; } body { padding:16px 10px 60px; } }
 </style></head><body><h1>Latest changes: before | after</h1>
 <p>Each row: <b>before</b> on the left, <b>now</b> on the right. Older pages are at the bottom.</p>
 <div class="pair"><h2>Loading screen</h2><p>Before: the island's still picture alone, the window half empty, nothing moving for seconds (phone, Fast 3G, at 2 s). Now (built: A): above the window, in its own colours, edges and px, a strip of meadow where the cat walks as far as the game has come (real bytes of the script and the picture pack), a path behind it, toward the sunflower; gone when the island is painted. The cat comes from the pack's first 21 KB.</p><div class="ba"><figure><img src="loading_before_phone.png"><span class="tag b">BEFORE</span></figure><figure><img src="loading_path_phone.png"><span class="tag a">A: BUILT</span></figure></div>
