@@ -10,7 +10,26 @@ p { color:#c9b089; margin-top:8px; } p b { color:#f3dfba; font-weight:normal; }
 figure { margin:0; } img { width:100%; display:block; border:3px solid #5b3f36; border-radius:4px; image-rendering:pixelated; }
 .one img { margin-top:16px; }
 figcaption { font-size:22px; line-height:28px; margin-top:6px; } figcaption span { display:block; font-size:18px; line-height:24px; color:#c9b089; }
-</style></head><body>
+.pair { max-width:1296px; margin:48px auto 0; } .pair h2 { margin:0 0 4px; } .pair p { margin:0 0 12px; max-width:none; }
+.ba { display:grid; grid-template-columns:1fr 1fr; gap:12px; } .ba figure { position:relative; }
+.tag { position:absolute; top:10px; left:10px; padding:4px 12px; font-size:22px; border:3px solid #2b2320; }
+.tag.b { background:#c9b089; color:#2b2320; } .tag.a { background:#8fc06a; color:#2b2320; }
+.wide { display:block; } .wide img { margin-top:8px; }
+details { max-width:1296px; margin:96px auto 0; } summary { font-size:28px; cursor:pointer; color:#c9b089; }
+@media (max-width:700px) { .ba { grid-template-columns:1fr; } }
+</style></head><body><h1>Latest changes: before | after</h1>
+<p>Each row: <b>before</b> on the left, <b>now</b> on the right. Older pages are at the bottom.</p>
+<div class="pair"><h2>Blocks are cubes, you are 1 block tall</h2><p>The meadow: a step and a wall now read as whole blocks.</p><div class="ba"><figure><img src="cube_meadow_desk_before_z.png"><span class="tag b">BEFORE</span></figure><figure><img src="cube_meadow_desk_z.png"><span class="tag a">NOW</span></figure></div></div>
+<div class="pair"><h2>A dug trench in cubes</h2><p>Its walls are whole blocks deep, not slabs.</p><div class="ba"><figure><img src="cube_stair_desk_before_z.png"><span class="tag b">BEFORE</span></figure><figure><img src="cube_stair_desk_z.png"><span class="tag a">NOW</span></figure></div></div>
+<div class="pair"><h2>Tall land south of you no longer hides you</h2><p>The camera looks down over it as it rises.</p><div class="ba"><figure><img src="cube_wall_earth_desk_before.png"><span class="tag b">BEFORE</span></figure><figure><img src="cube_wall_earth_desk.png"><span class="tag a">NOW</span></figure></div></div>
+<div class="pair"><h2>Cave mouths seen from every side</h2><p>Mouths facing north, east, west: a dark notch on the rim and the ground before them.</p><div class="ba"><figure><img src="cave_mouth_v0_desk_above_z.png"><span class="tag b">BEFORE</span></figure><figure><img src="cave_mouth_v3_desk_above_z.png"><span class="tag a">NOW</span></figure></div></div>
+<div class="pair"><h2>No black slab under a hill's face</h2><p>Seen from a tunnel: the stepped black area was the shaft darkening, now only in open holes.</p><div class="ba"><figure><img src="doben3_before_tunnel_desk_z.png"><span class="tag b">BEFORE</span></figure><figure><img src="doben3_after_tunnel_desk_z.png"><span class="tag a">NOW</span></figure></div></div>
+<div class="pair"><h2>Walking out of a tunnel</h2><p>You were drawn up on the hill's face for a moment; now where you stand.</p><div class="ba"><figure><img src="tunnel_before2_desk_caught_z.png"><span class="tag b">BEFORE</span></figure><figure><img src="tunnel_after_desk_caught_z.png"><span class="tag a">NOW</span></figure></div></div>
+<div class="pair"><h2>Underground: nobody drawn through the ceiling</h2><p>The hens on the land over your room are gone; the one in your room stays.</p><div class="ba"><figure><img src="mobs_above_desk_before_z.png"><span class="tag b">BEFORE</span></figure><figure><img src="mobs_above_desk_after_z.png"><span class="tag a">NOW</span></figure></div></div>
+<div class="pair"><h2>Marks inside a dug room</h2><p>The block to break sits inside the opening; no box round your head.</p><div class="ba"><figure><img src="room_before_crop.png"><span class="tag b">BEFORE</span></figure><figure><img src="room_after_crop.png"><span class="tag a">NOW</span></figure></div></div>
+<div class="pair"><h2>Jumping up a step</h2><p>Top row before, bottom row now: a crouch, an arc with legs tucked, a landing; auto-jump walks you up with no key.</p><figure class="wide"><img src="jump2_desk_walkup.png"></figure><figure class="wide"><img src="jump2_phone_walkup.png"></figure></div>
+<details><summary>Older pages (choices, variants, reviews)</summary>
+
 <h1>Cave mouths you can see from every side</h1>
 <p>A hill 3 high with tunnels into it: the mouth on the north (top left), east (right), west (left) and south (the one you see). A 1-tile alcove on the north side gets nothing (no way in). The eye looks north, so only the south mouth shows today. The hint is a shade painted into the land's tops when the land is built (whole art px, 2x2 dither steps), nothing per frame.</p>
 <h2>Before</h2>
@@ -165,4 +184,4 @@ figcaption { font-size:22px; line-height:28px; margin-top:6px; } figcaption span
 <figure><img src="water/F_10.png" alt="Far away, evening" loading="lazy"><figcaption>Far away, evening</figcaption></figure>
 </div>
 <p style="margin-top:40px">Picked already: the land's light (1 + 2 + 3, in the game), the side of a block (4, landing).</p>
-</body></html>
+</details></body></html>
