@@ -11,6 +11,22 @@ figure { margin:0; } img { width:100%; display:block; border:3px solid #5b3f36; 
 .one img { margin-top:16px; }
 figcaption { font-size:22px; line-height:28px; margin-top:6px; } figcaption span { display:block; font-size:18px; line-height:24px; color:#c9b089; }
 </style></head><body>
+<h1>Block size: a block half your size, you two blocks tall (pick one)</h1>
+<p>Real renders from the game's own renderer (two constants and the body's size changed on a copy, nothing in your game). Same spot each time: you on the meadow, a wall 1 high west of you and 2 high east, a tunnel dug 2 high into a hill (left), a stair up a hill (right), a house (top). The cat is 14 x 16 art px. Each new player is a new character, so the fur colour changes: ignore it.</p>
+<p><b>My honest view:</b> B and C have the same proportions (you exactly 2 levels tall, a block about half your width); they differ only in how fine the land's pixels are. C is the cheap one: no server change, the agents see the same world. Its flaw: the cat's pixels are twice the land's (our pixel rule) until the cat is redrawn at 32 px, and built walls/houses must be redrawn 2 levels tall (look how low the house is in C). B has one pixel size everywhere but means new 8 px art for everything and a world with 4 cells per tile: every save, the server and the agents' map change. A does not do what you asked: a level stays a quarter of your height. I suggest <b>C</b>, then the cat redrawn at 32 px. Tell me a number.</p>
+<div class="grid">
+<figure><img src="bs_v0.png" alt="0 today"><figcaption>0 today<span>a block as wide as you, a level half your height</span></figcaption></figure>
+<figure><img src="bs_vA.png" alt="A you twice as big"><figcaption>A: you at 2x, land unchanged<span>Cost: the body sprites at 2x (and every creature, item and piece of furniture too, or they look tiny); no server or agent change. Breaks: the cat's pixels are twice the land's; you are 4 levels tall, so 2-high tunnels and doors look like mouse holes.</span></figcaption></figure>
+<figure><img src="bs_vB.png" alt="B blocks split 2x2"><figcaption>B: every tile split into 2 x 2 blocks of 8 px, you unchanged<span>Cost: all land, wall, door, stair and furniture art redrawn at 8 px (here: the 16 px art halved, rough), and the world grid halved: server rules, saves, pathfinding, chunk size and the agents' map (4 cells a tile). Breaks: every save and the agents' API. One pixel size everywhere.</span></figcaption></figure>
+<figure><img src="bs_vC.png" alt="C levels 16 high, you at 2x"><figcaption>C: levels drawn 16 px high (a block a cube), you at 2x<span>Cost: two renderer constants, the body at 2x (later a new 32 px cat), built walls/doors/roofs redrawn 2 levels tall; no server or agent change. Breaks: the cat's pixels twice the land's until redrawn; cliffs and holes twice as tall on screen (less land seen north of you).</span></figcaption></figure>
+</div>
+<p style="margin-top:24px"><b>Close up, real size (0, A, B, C)</b></p>
+<div class="grid">
+<figure><img src="bs_v0_near.png" alt="0 close"><figcaption>0 today</figcaption></figure>
+<figure><img src="bs_vA_near.png" alt="A close"><figcaption>A</figcaption></figure>
+<figure><img src="bs_vB_near.png" alt="B close"><figcaption>B</figcaption></figure>
+<figure><img src="bs_vC_near.png" alt="C close"><figcaption>C</figcaption></figure>
+</div>
 <h1>Under ground: how to read height? (pick one)</h1>
 <p>Your pocket under your stair, your stair halfway, and your bottom room. Each sheet, left to right: <b>today</b> | <b>1 well</b> (wide lens looking down a hole) | <b>2 tilted from the south</b> | <b>3 drawn cliffs</b> | <b>4 side cut</b> (a slice seen from the side).</p>
 <p><b>My honest view:</b> only the side cut (4) really shows height: in your pocket you see the ledge east of you is at your head and the stair is a diagonal above. But it fails in the bottom room (the cave runs north-south there). 1 looks more 3D but does not show height. 2 brings back fake stairs. 3 is weak. My suggestion: keep today's view and add the side cut as a small inset (or on a held key) when you are under ground. Tell me a number, or "inset".</p>
