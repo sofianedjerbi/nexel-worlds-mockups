@@ -34,6 +34,50 @@ figure { min-width:0; } img { max-width:100%; } .grid { grid-template-columns:re
 #edges .pick { border:3px solid #8fc06a; padding:12px 14px; margin-top:24px; } #edges .pick p { margin:0; }
 @media (max-width:700px) { .ec { grid-template-columns:repeat(2, minmax(0, 1fr)); } }
 </style>
+<div class="pair" id="sel2"><style>
+#sel2 h2 { margin-top:0; } #sel2 h3 { font-size:24px; line-height:30px; font-weight:normal; margin:36px 0 4px; color:#f3dfba; } #sel2 h3 em { font-style:normal; color:#2b2320; background:#8fc06a; padding:0 8px; margin-left:6px; white-space:nowrap; }
+#sel2 ul { margin:6px 0 10px; padding-left:20px; color:#c9b089; } #sel2 li { margin:2px 0; } #sel2 img { max-width:100%; height:auto; }
+#sel2 .ph { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px; margin-top:8px; } #sel2 .ph figure { position:relative; } #sel2 .ph .tag { font-size:14px; padding:2px 6px; top:4px; left:4px; }
+#sel2 .pick { border:3px solid #8fc06a; padding:12px 14px; margin-top:36px; } #sel2 .pick h3 { margin-top:0; }
+@media (max-width:700px) { #sel2 .ph { grid-template-columns:repeat(2, minmax(0, 1fr)); } }
+</style>
+<h2>Which block am I selecting? Pick one</h2>
+<p>From above, a block at your feet, at head height and in the ground ahead sit at almost the same spot. A box alone does not say which level it is. Worse (your pictures): a cell in <b>your own column</b> is cut out of your sprite, so it vanishes. Each option is rendered in the real game (a mockup flag, nothing built), in the same scenes:</p>
+<ul><li><b>First picture</b>: your case. Build mode in a 1-wide slot. Cursor at -1, 0, +1, +2 in your own column (left), and the same level one tile in front (right). Red here = nothing in hand.</li>
+<li><b>Second picture</b>: by keys, pickaxe in hand: tunnel, step down, step up (roof over you / pit), 1-high and 2-high wall, build cursor on a wall and in the air.</li>
+<li>Desk 1440x900 cropped 2x. Phone frames at the end: step up under a roof (R takes the block over your head).</li>
+<li><b>Dotted = can't reach</b>, the same in every option (box, gauge cell, tag, beam).</li></ul>
+
+<h3>Today</h3>
+<p>In your column the box is cut where your sprite is. Out of build mode a box over your head is not drawn at all (phone frame: R has no box).</p>
+<img src="sel2_o0_own.png"><img src="sel2_o0_five.png" style="margin-top:8px">
+
+<h3>1. Side-view gauge</h3>
+<p><b>Idea</b>: a small panel in a corner (desk: bottom right, over the bar's end; phone: top left) shows a side cut: your column (the cat) and 3 columns ahead, levels -2..+2. The cell a key acts on is ringed in its colour with its key on it (X, R, E, + to place). Shown beside each crop at the same scale.<br><b>At a glance</b>: the exact level and distance, and which key. Works in your column, behind your sprite, in the ground.<br><b>Cost</b>: about 100 lines, one small canvas. <b>Phone</b>: fits (135x200 css under the goals). Weak: your eyes leave the block; build mode off the facing line needs a rule.</p>
+<img src="sel2_o1_own.png"><img src="sel2_o1_five.png" style="margin-top:8px">
+
+<h3>2. Height tag on the box</h3>
+<p><b>Idea</b>: a pixel tag at the box's top right: an arrow and a word (FEET, HEAD, BELOW, ABOVE, UNDER, YOU, UP2).<br><b>At a glance</b>: the level, in words, on the block. <b>Cost</b>: small (a 3x5 pixel font). <b>Phone</b>: tight; two tags stack and cover land and the key prompts. Weak: still no box when the cell is on you (only the tag floats).</p>
+<img src="sel2_o2_own.png"><img src="sel2_o2_five.png" style="margin-top:8px">
+
+<h3>3. One block + its column</h3>
+<p><b>Idea</b>: only the main cell (R, else X, else E) gets a strong double line; the cells above and below it are faint ghost outlines.<br><b>At a glance</b>: where in the stack it sits. <b>Cost</b>: small. <b>Phone</b>: fits. Weak: the ghost stack reads as a ladder of lines; the other key's box is dropped; in your column the strong box is still cut on you.</p>
+<img src="sel2_o3_own.png"><img src="sel2_o3_five.png" style="margin-top:8px">
+
+<h3>4. Light beam</h3>
+<p><b>Idea</b>: a thin pixel line from your paw to the centre of the face the key acts through, a dot there, plus the box.<br><b>At a glance</b>: "this face, from my paw": near face = same level, top face = below. <b>Cost</b>: small. <b>Phone</b>: fits. Weak: in your own column there is no line to draw; two beams look like a fork.</p>
+<img src="sel2_o4_own.png"><img src="sel2_o4_five.png" style="margin-top:8px">
+
+<h3>5. Box drawn over you + the gauge</h3>
+<p><b>Idea</b>: the selected box is drawn whole <b>on top of</b> your sprite (no more cut), its colour faintly over you so you show through it; plus the gauge of option 1.<br><b>At a glance</b>: the box is always there, even on you; the gauge says the level. <b>Cost</b>: removes code (the cut, and the "box on your head is not drawn" rule) + the gauge. <b>Phone</b>: fits. Weak: your sprite is tinted while you aim at your own column (only then).</p>
+<img src="sel2_o5_own.png"><img src="sel2_o5_five.png" style="margin-top:8px">
+
+<h3>Phone (390x844): step up under a roof</h3>
+<p>R takes the block over your head, X the one ahead. Today and 2 to 4: R's box is missing (it is on you). 1 and 5: the gauge shows R over the cat; 5 also draws R's box on you.</p>
+<div class="ph"><figure><img src="sel2_o0_phone.png"><span class="tag b">TODAY</span></figure><figure><img src="sel2_o1_phone.png"><span class="tag a">1 GAUGE</span></figure><figure><img src="sel2_o2_phone.png"><span class="tag a">2 TAG</span></figure><figure><img src="sel2_o3_phone.png"><span class="tag a">3 COLUMN</span></figure><figure><img src="sel2_o4_phone.png"><span class="tag a">4 BEAM</span></figure><figure><img src="sel2_o5_phone.png"><span class="tag a">5 OVER YOU + GAUGE</span></figure></div>
+
+<div class="pick"><h3>Recommendation: 5 <em>box over you + gauge</em></h3><p>The box says WHICH block, the gauge says WHICH LEVEL. Only 5 fixes your case: a cell in your own column is never hidden again. The gauge also answers "how do I dig stairs up": you see R over the cat and X ahead, side-on. Tags (2) and the beam (4) add clutter on the land and still lose the box on you.</p></div>
+</div>
 <div class="pair" id="build2"><h2>Build mode: place on the face you point at; dotted = not yet</h2><p>Real game, desk 1440x900 cropped at 2x, then phone. <b>1</b> The mouse on a block's west side: the block goes west of it (Minecraft's way); it went on top. The ghost now shows every face the eye sees (its west side is the thin strip on its left here). Keys keep today's cell. <b>2</b> A block nothing holds (E over the meadow): it was a red ghost and "Nothing holds it" in red; now a dotted box, nothing said, Space does nothing. A block planned under or beside it makes it whole. Same for stairs with nothing higher beside them. <b>3</b> The mouse on a wall's top: the ray went through the wall to the ground behind it; now walls, fences and doors are hit as the boxes they are, and X takes them.</p>
 <div class="ba"><figure><img src="build2_west_before.png"><span class="tag b">BEFORE</span></figure><figure><img src="build2_west_after.png"><span class="tag a">NOW</span></figure></div>
 <div class="ba" style="margin-top:12px"><figure><img src="build2_air_before.png"><span class="tag b">BEFORE</span></figure><figure><img src="build2_air_after.png"><span class="tag a">NOW</span></figure></div>
