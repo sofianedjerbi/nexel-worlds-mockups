@@ -34,6 +34,17 @@ figure { min-width:0; } img { max-width:100%; } .grid { grid-template-columns:re
 #edges .pick { border:3px solid #8fc06a; padding:12px 14px; margin-top:24px; } #edges .pick p { margin:0; }
 @media (max-width:700px) { .ec { grid-template-columns:repeat(2, minmax(0, 1fr)); } }
 </style>
+<div class="pair" id="aim"><h2>Box over you + aim poses</h2><p>The block you have selected is always shown in full. At your body or over your head, its box is drawn over your character, and you can still see the character inside it. The block under you gets a normal box under your feet, with your character standing in front of it. Your character also looks at the block and points at it with a paw: up, ahead or down. With nothing selected, it just stands.</p>
+<p>1. Your case: build mode in a 1-wide shaft, cursor in your own column at -1, 0, +1 (desk crop, 2x nearest). Red means you cannot place there (you stand in it).</p>
+<div class="ba" style="margin-top:12px"><figure><img src="aim_shaft_own_before.png"><span class="tag b">BEFORE</span></figure><figure><img src="aim_shaft_own_after.png"><span class="tag a">NOW</span></figure></div>
+<p>2. The same shaft, cursor one tile in front at -1, 0, +1: looking down, ahead, up.</p>
+<div class="ba" style="margin-top:12px"><figure><img src="aim_shaft_front_before.png"><span class="tag b">BEFORE</span></figure><figure><img src="aim_shaft_front_after.png"><span class="tag a">NOW</span></figure></div>
+<p>3. Open ground by keys: step down ahead (pickaxe, X), step up ahead (pickaxe, X), earth on top of the step (E), empty paw (nothing selected: standing).</p>
+<div class="ba" style="margin-top:12px"><figure><img src="aim_keys_before.png"><span class="tag b">BEFORE</span></figure><figure><img src="aim_keys_after.png"><span class="tag a">NOW</span></figure></div>
+<p>4. Phone (390x844): the box at your body, drawn over you.</p>
+<div class="ba" style="margin-top:12px"><figure><img src="aim_phone_before.png"><span class="tag b">BEFORE</span></figure><figure><img src="aim_phone_after.png"><span class="tag a">NOW</span></figure></div>
+<p>5. Every aim pose: cat, bunny, bear, frog, duck, a dressed cat and a dressed bear. Each group: standing, up, ahead, down. Rows: facing you, away, right, left.</p>
+<div class="wide"><img src="aim_sheet.png"></div></div>
 <div class="pair" id="ui3"><h2>Small UI fixes: the title's line, the item in the paw, blocks in the bag</h2><p>1. Phone on its side (844x390): the tip under the name wrapped to two lines. Now it stays on one line beside the window. A tip too long for that space is swapped for one that fits (28 of the 30 fit at 844 wide).</p>
 <div class="ba"><figure><img src="ui3_title_before.png"><span class="tag b">BEFORE</span></figure><figure><img src="ui3_title_after.png"><span class="tag a">NOW</span></figure></div>
 <p>2. The 8 walk frames, holding earth (zoomed 6x, nearest): the body bobs down a pixel on some frames and the block in the paw stood still. Now the block moves with the body, by whole art pixels.</p>
