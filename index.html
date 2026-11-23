@@ -34,6 +34,151 @@ figure { min-width:0; } img { max-width:100%; } .grid { grid-template-columns:re
 #edges .pick { border:3px solid #8fc06a; padding:12px 14px; margin-top:24px; } #edges .pick p { margin:0; }
 @media (max-width:700px) { .ec { grid-template-columns:repeat(2, minmax(0, 1fr)); } }
 </style>
+<div class="pair" id="sword2"><style>
+#sword2 .sc { overflow-x:auto; max-width:1296px; margin:8px auto 0; } #sword2 .sc img { width:auto; max-width:none; border-radius:0; }
+#sword2 .lk { max-width:1296px; margin:18px auto 0; } #sword2 h3 { font-size:24px; line-height:30px; font-weight:normal; margin:22px 0 4px; }
+#sword2 .an { display:grid; grid-template-columns:repeat(4, 80px); gap:6px 10px; margin-top:6px; }
+#sword2 .an div { width:80px; height:80px; background-repeat:no-repeat; background-size:1360px 320px; image-rendering:pixelated; border:2px solid #5b3f36; background-color:#9bc96a;
+  animation:sw2walk calc(680ms * var(--k, 1)) steps(8) infinite; }
+#sword2 .an div.at { animation-name:sw2atk; animation-duration:calc(800ms * var(--k, 1)); }
+#sword2 .an div.st { animation:none; background-position-x:-1280px; }
+@keyframes sw2walk { from { background-position-x:0; } to { background-position-x:-640px; } }
+@keyframes sw2atk { from { background-position-x:-640px; } to { background-position-x:-1280px; } }
+#sword2 button { font:inherit; font-size:18px; background:#5b3f36; color:#f3dfba; border:3px solid #8a6a4f; padding:4px 12px; margin-top:8px; }
+#sword2 ul { max-width:1296px; margin:6px auto 0; padding-left:22px; color:#c9b089; } #sword2 li { margin-top:4px; } #sword2 li b { color:#f3dfba; font-weight:normal; }
+</style>
+<h2>Latest changes: a sword held naturally (pick a look: A, B or C)</h2>
+<p>The owner: "sword handling does not look natural at all.. player holding sword animations are bad." I recorded the real game first: a copy of your world on another port, the cat and the bunny holding a sword, desk at zoom 3 and phone (390x844, DPR 3), at full speed and at 1/4 speed. Every frame below is the real screen at 1:1, with no scaling.</p>
+<h3>What looks wrong today (seen on the real frames)</h3>
+<ul>
+<li><b>Standing, the sword points at the ground.</b> When you stand still you always aim at the tile in front of you, so the body takes the "aim down" pose. The blade hangs straight down from a paw in front of the belly, and its tip goes 6-8 art px below the feet. It looks like a stick stuck through the cat into the grass.</li>
+<li><b>Walking, it flips to upright.</b> The moment you move, the blade jumps up beside the face. When you stop, it drops back down. That is a 180° flip on every start and stop.</li>
+<li><b>Walking, it is rigid.</b> Across the walk cycle the sword only follows the 1 px bob. It never swings with the steps, so it reads as pasted on. Side on, the blade crosses the front of the face.</li>
+<li><b>Facing us or away, it is a flagpole.</b> The blade stands straight up beside the head, as tall as the head and ears together, and the hand ring sits low at the belly. Nothing between them looks like an arm carrying something.</li>
+<li><b>Jump:</b> the upright blade stays stiff through the whole arc. After landing it flips to pointing down.</li>
+<li><b>Attack:</b> it starts from the upright pose, swings back behind, then sweeps a white arc about 3 body-widths wide. The cut itself reads well. The weak part is everything around it.</li>
+<li><b>Size:</b> the blade (11 art px) is about 70% of the body's height. That is fine for a strike, but too much to carry up beside the head.</li>
+</ul>
+<p>Desk, 1/4 speed, cat: standing in the four facings, then aim up / ahead / down facing down, right and up, then the bunny standing.</p>
+<div class="sc"><img src="sword2_rec_still.png"></div>
+<p>Desk, 1/4 speed: walking right (each frame is about 13 ms of game time).</p>
+<div class="sc"><img src="sword2_rec_walk.png"></div>
+<p>Desk, 1/4 speed: jump to the right, then an attack facing down.</p>
+<div class="sc"><img src="sword2_rec_jump.png"></div>
+<div class="sc"><img src="sword2_rec_attack.png"></div>
+<p>Phone, full speed: walking right, then an attack facing down.</p>
+<div class="sc"><img src="sword2_rec_phone_walk.png"></div>
+<div class="sc"><img src="sword2_rec_phone_attack.png"></div>
+<h3>How small pixel games carry a sword</h3>
+<p>At 16-24 px tall, good games almost never hold the blade up in front of the face. There are three common ways. <b>Low at the side</b> (Hyper Light Drifter, Moonlighter, Secret of Mana): the hand at the hip, the blade angled down and forward, swaying with the steps. <b>On the shoulder</b> (many RPG idles): the hilt at the chest, the blade lying back over the shoulder. <b>Sheathed on the back</b> (Link to the Past, Minish Cap, Link's Awakening): no hand on it at all until you strike, and the strike draws it from over the shoulder. Below, each one is drawn from the game's own sword, hand and cat sheet, in whole art px. Each look keeps one pose whether you stand, aim or walk: the body aims, the sword does not flip.</p>
+<button onclick="const s=document.getElementById('sword2').style; s.setProperty('--k', s.getPropertyValue('--k') === '4' ? '1' : '4'); this.textContent = s.getPropertyValue('--k') === '4' ? 'speed: 1/4 (tap for full)' : 'speed: full (tap for 1/4)';">speed: full (tap for 1/4)</button>
+<div class="lk"><h3>Today (as built)</h3><p>Walking: upright beside the head and rigid. Standing: the real game shows it pointing at the ground (aim down).</p>
+<p style="margin:6px 0 0">cat, walk: down, up, right, left</p><div class="an">
+<div style="background-image:url(sword2_today_cat.png);background-position-y:-0px"></div>
+<div style="background-image:url(sword2_today_cat.png);background-position-y:-80px"></div>
+<div style="background-image:url(sword2_today_cat.png);background-position-y:-160px"></div>
+<div style="background-image:url(sword2_today_cat.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">cat, attack: down, up, right, left</p><div class="an">
+<div class="at" style="background-image:url(sword2_today_cat.png);background-position-y:-0px"></div>
+<div class="at" style="background-image:url(sword2_today_cat.png);background-position-y:-80px"></div>
+<div class="at" style="background-image:url(sword2_today_cat.png);background-position-y:-160px"></div>
+<div class="at" style="background-image:url(sword2_today_cat.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">cat, standing: down, up, right, left</p><div class="an">
+<div class="st" style="background-image:url(sword2_today_cat.png);background-position-y:-0px"></div>
+<div class="st" style="background-image:url(sword2_today_cat.png);background-position-y:-80px"></div>
+<div class="st" style="background-image:url(sword2_today_cat.png);background-position-y:-160px"></div>
+<div class="st" style="background-image:url(sword2_today_cat.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">bunny, walk: down, up, right, left</p><div class="an">
+<div style="background-image:url(sword2_today_bunny.png);background-position-y:-0px"></div>
+<div style="background-image:url(sword2_today_bunny.png);background-position-y:-80px"></div>
+<div style="background-image:url(sword2_today_bunny.png);background-position-y:-160px"></div>
+<div style="background-image:url(sword2_today_bunny.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">the cat sheet: walk 8, attack 8, standing (rows down, up, right, left)</p><div class="sc"><img src="sword2_today_cat.png" style="width:1360px"></div></div>
+<div class="lk"><h3>A. Low at the side</h3><p>The hand at the hip, the blade angled down and out (forward when side on). It sways a few degrees with each step and the hand moves a px. The cut winds up from there.</p>
+<p style="margin:6px 0 0">cat, walk: down, up, right, left</p><div class="an">
+<div style="background-image:url(sword2_A_cat.png);background-position-y:-0px"></div>
+<div style="background-image:url(sword2_A_cat.png);background-position-y:-80px"></div>
+<div style="background-image:url(sword2_A_cat.png);background-position-y:-160px"></div>
+<div style="background-image:url(sword2_A_cat.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">cat, attack: down, up, right, left</p><div class="an">
+<div class="at" style="background-image:url(sword2_A_cat.png);background-position-y:-0px"></div>
+<div class="at" style="background-image:url(sword2_A_cat.png);background-position-y:-80px"></div>
+<div class="at" style="background-image:url(sword2_A_cat.png);background-position-y:-160px"></div>
+<div class="at" style="background-image:url(sword2_A_cat.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">cat, standing: down, up, right, left</p><div class="an">
+<div class="st" style="background-image:url(sword2_A_cat.png);background-position-y:-0px"></div>
+<div class="st" style="background-image:url(sword2_A_cat.png);background-position-y:-80px"></div>
+<div class="st" style="background-image:url(sword2_A_cat.png);background-position-y:-160px"></div>
+<div class="st" style="background-image:url(sword2_A_cat.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">bunny, walk: down, up, right, left</p><div class="an">
+<div style="background-image:url(sword2_A_bunny.png);background-position-y:-0px"></div>
+<div style="background-image:url(sword2_A_bunny.png);background-position-y:-80px"></div>
+<div style="background-image:url(sword2_A_bunny.png);background-position-y:-160px"></div>
+<div style="background-image:url(sword2_A_bunny.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">the cat sheet: walk 8, attack 8, standing (rows down, up, right, left)</p><div class="sc"><img src="sword2_A_cat.png" style="width:1360px"></div></div>
+<div class="lk"><h3>B. On the shoulder</h3><p>The hand at the chest, the blade lying back over the shoulder, behind the head. From behind, the blade lies across the back.</p>
+<p style="margin:6px 0 0">cat, walk: down, up, right, left</p><div class="an">
+<div style="background-image:url(sword2_B_cat.png);background-position-y:-0px"></div>
+<div style="background-image:url(sword2_B_cat.png);background-position-y:-80px"></div>
+<div style="background-image:url(sword2_B_cat.png);background-position-y:-160px"></div>
+<div style="background-image:url(sword2_B_cat.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">cat, attack: down, up, right, left</p><div class="an">
+<div class="at" style="background-image:url(sword2_B_cat.png);background-position-y:-0px"></div>
+<div class="at" style="background-image:url(sword2_B_cat.png);background-position-y:-80px"></div>
+<div class="at" style="background-image:url(sword2_B_cat.png);background-position-y:-160px"></div>
+<div class="at" style="background-image:url(sword2_B_cat.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">cat, standing: down, up, right, left</p><div class="an">
+<div class="st" style="background-image:url(sword2_B_cat.png);background-position-y:-0px"></div>
+<div class="st" style="background-image:url(sword2_B_cat.png);background-position-y:-80px"></div>
+<div class="st" style="background-image:url(sword2_B_cat.png);background-position-y:-160px"></div>
+<div class="st" style="background-image:url(sword2_B_cat.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">bunny, walk: down, up, right, left</p><div class="an">
+<div style="background-image:url(sword2_B_bunny.png);background-position-y:-0px"></div>
+<div style="background-image:url(sword2_B_bunny.png);background-position-y:-80px"></div>
+<div style="background-image:url(sword2_B_bunny.png);background-position-y:-160px"></div>
+<div style="background-image:url(sword2_B_bunny.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">the cat sheet: walk 8, attack 8, standing (rows down, up, right, left)</p><div class="sc"><img src="sword2_B_cat.png" style="width:1360px"></div></div>
+<div class="lk"><h3>C. Sheathed on the back</h3><p>A brown scabbard on the back, with the hilt over the shoulder and no hand on it. The cut draws it: frame 0 is the hand on the hilt over the shoulder, which is the cut's own wind-up.</p>
+<p style="margin:6px 0 0">cat, walk: down, up, right, left</p><div class="an">
+<div style="background-image:url(sword2_C_cat.png);background-position-y:-0px"></div>
+<div style="background-image:url(sword2_C_cat.png);background-position-y:-80px"></div>
+<div style="background-image:url(sword2_C_cat.png);background-position-y:-160px"></div>
+<div style="background-image:url(sword2_C_cat.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">cat, attack: down, up, right, left</p><div class="an">
+<div class="at" style="background-image:url(sword2_C_cat.png);background-position-y:-0px"></div>
+<div class="at" style="background-image:url(sword2_C_cat.png);background-position-y:-80px"></div>
+<div class="at" style="background-image:url(sword2_C_cat.png);background-position-y:-160px"></div>
+<div class="at" style="background-image:url(sword2_C_cat.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">cat, standing: down, up, right, left</p><div class="an">
+<div class="st" style="background-image:url(sword2_C_cat.png);background-position-y:-0px"></div>
+<div class="st" style="background-image:url(sword2_C_cat.png);background-position-y:-80px"></div>
+<div class="st" style="background-image:url(sword2_C_cat.png);background-position-y:-160px"></div>
+<div class="st" style="background-image:url(sword2_C_cat.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">bunny, walk: down, up, right, left</p><div class="an">
+<div style="background-image:url(sword2_C_bunny.png);background-position-y:-0px"></div>
+<div style="background-image:url(sword2_C_bunny.png);background-position-y:-80px"></div>
+<div style="background-image:url(sword2_C_bunny.png);background-position-y:-160px"></div>
+<div style="background-image:url(sword2_C_bunny.png);background-position-y:-240px"></div>
+</div>
+<p style="margin:6px 0 0">the cat sheet: walk 8, attack 8, standing (rows down, up, right, left)</p><div class="sc"><img src="sword2_C_cat.png" style="width:1360px"></div></div>
+<p><b>My recommendation: A, low at the side.</b> It is the only one where you clearly <i>hold</i> the sword, which is what you asked for. The blade sways with each step. Its low guard is one step from the cut's wind-up, so the strike starts with no jump. Standing and aiming keep the same pose, so the up/down flip is gone. C is the cleanest look when not fighting, but nothing is held. B hides most of the blade behind the head at this size.</p>
+</div>
+
 <div class="pair" id="flow"><h2>Water that flows, a level at a time</h2><p>Side cuts and a top view drawn in whole px (1 cell = 10 px, shown 1:1) in the game's own colours, the water moved by the rules to be built (4 steps a second). <b>Before:</b> water is a kind of ground on a whole tile. A hole dug beside a river stays dry, or (tilled soil) turns to water in one go, lying at the hole's floor with no level. <b>Now:</b> each block of a hole holds water at a level 1 to 7 (8: a source, as the sea, a river, a lake, or a can poured by a player). Water goes down first, then sideways a level less a tile. Shallow water is drawn thinner. Water with no source behind it dries up, and any block you put stops it (a dam).</p>
 <h3 style="font-size:22px;font-weight:normal;margin:20px 0 4px">1. A hole dug beside a river</h3><p><b>Before:</b> dug, then the whole floor turns to water at once.</p><figure><img src="flow_hole_before.png" style="width:auto;max-width:none"></figure>
 <p style="margin-top:12px"><b>Now</b>, frames left to right, then down: dug with a wall left to the river, the wall cut, then 0.5 s, 0.75 s, 1 s, 1.5 s, 2 s, 3.5 s. It falls to the floor, spreads along it, and the hole fills a layer at a time; the top sinks a level a tile away from the river.</p><figure><img src="flow_hole_after.png" style="width:auto;max-width:none"></figure>
