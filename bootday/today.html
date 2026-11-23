@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nexel Worlds</title>
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<style>
+@font-face { font-family:SproutPixel; src:url(../sprout-pixel.ttf); }
+html, body { margin:0; background:#2b2320; }
+/* THE WAIT (#boot): the first thing on the screen, and nothing else, until the island is painted (title_scene.js: body.scene);
+   then it fades and the title is under it. All of it is in the page, its pictures too (2.6 KB: the cat's run, the meadow,
+   the hills, the clouds, the sun, the panel's edge): it moves from the first picture, before any file has come, and with no
+   script. Whole art px (--bootpx, said below; the frame's and the chip's --bootu, half of it, the windows' 3 px on a desk); every move is a transform or an opacity in whole art px steps (the compositor's), so the
+   cat runs on while the page's thread is busy making the game. The owner: "the loading screen looks bad, can't you just
+   show the loading and nothing else first so it doesn't look stuck?"; "make it prettier, and smoother". */
+:root { --bootpx:4px; --bootf:3px; --bootu:2px; --bootpanel:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAcCAYAAAB/E6/TAAAA0klEQVR42u3WIQ6DQBCF4X8JDlGHQvYIbdJUcAMsSQWGE2B7glpOgEE0wfYGFYQEjoAkJOAQaCrIEtrapanYp1bNl5kVM4JVsutlQmH8213It7lGXN/Dsh0lyNg3ZDBJzNgCAbBsB9f3limJT2TsG2WQrPfMHnNHqpF1LVnb4EfRkIY0pCENaegvoLYzv7ah6lXeduZ8BdVlzv54xrIdpdjYN9Rl/j66usyV3wwSARAAcRhMh9Nuk7+pioEoSYUBECWpqIphM2TpSCYOA6UnsUQAXvt+Vo4j4cRSAAAAAElFTkSuQmCC); }      /* (the windows' panel.png: the frame and the chip) */
+#boot { position:fixed; inset:0; z-index:2147483000; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:calc(4 * var(--bootpx)); background:#2b2320; transition:opacity .5s ease-out; }
+#boot.done { opacity:0; pointer-events:none; }
+#boot > * { animation:bootin .24s steps(3) backwards; }
+#boot > :nth-child(2) { animation-delay:.04s; } #boot > :nth-child(3) { animation-delay:.08s; }
+@keyframes bootin { from { opacity:.3; transform:translateY(calc(2 * var(--bootpx))); } }
+#boot i { display:block; height:100%; width:calc(100% + var(--tw, 0px)); background:0 0 repeat-x; image-rendering:pixelated; will-change:transform; }
+#boot .win { position:relative; width:calc(64 * var(--bootpx)); height:calc(32 * var(--bootpx)); overflow:hidden; }
+#boot .win > div, #boot .win > b { position:absolute; left:0; width:100%; overflow:hidden; }
+#boot .sky { top:0; height:calc(27 * var(--bootpx)); background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAAbCAYAAABWb153AAAAPElEQVR42mMMmfX2PwMDAwMTAxRQyjBSZoEwzt39w2CkzIIkQpI5jpqcEMb+698ZHDU5GRiPP/tFDacCAAR1DdoMlcGkAAAAAElFTkSuQmCC) 0 0 / calc(2 * var(--bootpx)) 100%; image-rendering:pixelated; }
+#boot .sun { left:calc(45 * var(--bootpx)) !important; top:calc(4 * var(--bootpx)); width:calc(7 * var(--bootpx)) !important; height:calc(7 * var(--bootpx)); background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAO0lEQVR42mNkgIJXDyv+w9hi8h2MDAwMDEzoEsh8RhhDVNAaLvn6/VEGuE5cAK8kIzY7YY5iQnYdumsBKRQWTmKQw38AAAAASUVORK5CYII=) 0 0 / 100% 100%; image-rendering:pixelated; }
+#boot .cloud { top:calc(2 * var(--bootpx)); height:calc(8 * var(--bootpx)); }
+#boot .cloud i { --tw:calc(96 * var(--bootpx)); background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAAAICAYAAAAGP/oPAAAAfUlEQVR42u2SMQ6AIAxF+xMS3fUSev+z6CV016lMTEICaCkmfWOX/r5+0EcwM8fmAEBGErwVnLWk8ydolgeS4nt6Qu0d0rmdtHgiov28fye+VW4nKT4csc6jWvuDxGUaimW3yP1YsB0X5wTObYum/NhdKbRyojZwr6INowgPPnM9hP8eJ4gAAAAASUVORK5CYII=); background-size:var(--tw) 100%; animation:bootlay 30.72s steps(96) infinite; }
+#boot .far { top:calc(15 * var(--bootpx)); height:calc(12 * var(--bootpx)); }
+#boot .far i { --tw:calc(64 * var(--bootpx)); background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAMCAYAAADS87vJAAAArElEQVR42mNgGOGAcaAdsPzA3f/oYpEOyozDPgBgHr957xWGnLqSGN0CgpHU2KFGLC0/cPc/No9jCwhaBwIjqbFDaSwR63l6BQIjqR6nJCBI9TwpgUBuWcJIqeOIdSStzKe0LGGkhuOICYSGecf/U2p+Q5IlIzmpFV9AMFLL8/gso3YAUysrLT9w9z8jNWKGFo7FZy41shLMXTQLAGo4lh7uYqKlRYPR8+juAgCc25daojHNUwAAAABJRU5ErkJggg==); background-size:var(--tw) 100%; animation:bootlay 10.24s steps(64) infinite; }
+#boot .near { top:calc(18 * var(--bootpx)); height:calc(9 * var(--bootpx)); }
+#boot .near i { --tw:calc(48 * var(--bootpx)); background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAJCAYAAAB0d6/iAAAAe0lEQVR42mNgGOKAkV4WLTmU/B9dLMZuLuOg9gCyo6/c/4ohr6PITbFnGGkVYksOJf/H5mhcQEeRmyxPMFI7xGBmkOJ4dPNJ8QgjNUOMVDOIMZtQSmCkVohRy/HoZuNLCTF2cxkZKxZG/KeGZdR0PCn2MlHDoIFwPMxeALtNUiKXuUp8AAAAAElFTkSuQmCC); background-size:var(--tw) 100%; animation:bootlay 3.07s steps(48) infinite; }
+#boot .win > .cat { left:calc(24 * var(--bootpx)); top:calc(10 * var(--bootpx)); width:calc(16 * var(--bootpx)); height:calc(18 * var(--bootpx)); z-index:1; }
+#boot .cat i { width:calc(128 * var(--bootpx)); background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAASCAYAAACTkNaDAAACH0lEQVR42uVZMU7DMBT9iczUtYpQpNIbZGLtDVBO4B060IGtA6oYEEwMYQjsPkHVG7Ay9Qa0UoUqViaGMFQOqdO03/ZPSBpLkaJYL/7v5f1vx3agho2HUSLvxXTkQMtalfxZWUGY4nkYJbEIMg/030MhYFv4O5gghnxuRQKLl7jvty8AAOgMulv9mPfsGttEwLbwd/cFIQNRXYUlYYK3LZ3q2LEI0gsTQ9v4M8yLU0fxKDEph1i8mI4c4EoJrEE7Zv5uUUdn0M2VIJ1mgsdm6D4Bh3xuHXub+Lt1yrSi7JDz2KHMsBWwjfxdSgHLwmNL4n8bqIn8XUoByfGrk81lWUKrMlAT+TNKAW3x2YWQ3z/N9a0+PuHQImorBime/1NJ/E3kzygFtMUXtcurcwAAmIxntTYQBX8eRsndwwUAALy+vG/1PT2vQExp+TNKASnwst3ee+n9egmNMBAlf1WDzVTikxuI6QiJcaAtPrcVCgBeb5HOozzE/YtTGqhK/lmjqjrEItDai8AYiB3KGq+3yG0p6gy+Xp6hs+/vg+ljyjKQaSy2+qkYmdUAc1IDaVUAr/9odTJ1c+1jV+KJuiqWcyvm49kYqCz+sQhgyPXWEQrXRPdgCWOgQgNI51qLlsk+mw0RLHEKA8l5XIpmYqTJeJZmoDQkJnsp+OsYyMEsJibjmfZp2C7xmna2r/7WmRzHmuBrJYDp1qkN9hg0aAr/X4SgkKScKwgTAAAAAElFTkSuQmCC) 0 0 / 100% 100% no-repeat; animation:bootstep .64s steps(8) infinite; }
+#boot .ground { bottom:0; height:calc(5 * var(--bootpx)); }
+#boot .ground i { --tw:calc(16 * var(--bootpx)); background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAFCAYAAABM6GxJAAAAR0lEQVR42mM8cKXgPwMFgOXllzcMDAwMDM9efGaQkuDFqgibHEyMCSYgJcHL8OzFZ6wGYJODGciETRBmAzFyLLhsxWYINjkA2L8jXCzX210AAAAASUVORK5CYII=); background-size:var(--tw) 100%; animation:bootlay .64s steps(16) infinite; }
+#boot .ground { z-index:2; } #boot .win > .cat { z-index:3; }
+@keyframes bootstep { to { transform:translateX(-100%); } }
+@keyframes bootlay { to { transform:translateX(calc(-1 * var(--tw))); } }
+#boot .frame { border:solid transparent; border-width:calc(4 * var(--bootu)) calc(4 * var(--bootu)) calc(6 * var(--bootu)); border-image:var(--bootpanel) 4 4 6 fill / calc(4 * var(--bootu)) calc(4 * var(--bootu)) calc(6 * var(--bootu)) stretch; image-rendering:pixelated; }
+#boot .frame .win { margin:calc(-1 * var(--bootu)); }
+#boot .bar { box-sizing:border-box; width:calc(64 * var(--bootpx)); height:calc(8 * var(--bootpx)); padding:var(--bootpx) var(--bootpx) calc(2 * var(--bootpx)); background:#aa7959; box-shadow:inset 0 calc(-1 * var(--bootpx)) 0 #90625d; }
+#boot .track { position:relative; height:100%; overflow:hidden; background:#6b4a3a; box-shadow:inset 0 var(--bootpx) 0 #5b3f36; }
+#boot .track b { position:absolute; left:0; top:0; width:calc(62 * var(--bootpx)); height:100%; overflow:hidden; transform:translateX(calc(-62 * var(--bootpx))); background:#e0b84e; box-shadow:inset 0 var(--bootpx) 0 #fff1a8, inset 0 calc(-1 * var(--bootpx)) 0 #c49a3a; will-change:transform; }
+#boot .track b i { position:absolute; top:0; left:calc(-4 * var(--bootpx)); width:calc(2 * var(--bootpx)); background:#fff1a8; animation:bootglint 2.4s steps(40) infinite; }
+@keyframes bootglint { 0% { transform:translateX(0); } 50%, 100% { transform:translateX(calc(80 * var(--bootpx))); } }
+#boot .track u { position:absolute; inset:0; background:linear-gradient(90deg, transparent calc(5 * var(--bootpx)), #2b232040 0) 0 0 / calc(6 * var(--bootpx)) 100%; }
+#boot .chip { padding:0 calc(2 * var(--bootu)); border:solid transparent; border-width:calc(4 * var(--bootu)) calc(4 * var(--bootu)) calc(6 * var(--bootu)); border-image:var(--bootpanel) 4 4 6 fill / calc(4 * var(--bootu)) calc(4 * var(--bootu)) calc(6 * var(--bootu)) stretch; image-rendering:pixelated; font-family:SproutPixel, monospace; font-size:calc(9 * var(--bootf)); line-height:calc(9 * var(--bootf)); white-space:nowrap; }
+#boot .say { color:#5b3f36; }
+#boot .words { position:relative; width:calc(100vw - 16px); height:calc(9 * var(--bootu)); font-family:SproutPixel, monospace; font-size:calc(9 * var(--bootu)); line-height:calc(9 * var(--bootu)); color:#c9b089; }
+#boot .words p { position:absolute; inset:0; margin:0; text-align:center; white-space:nowrap; opacity:0; animation:boottip 28s infinite both; animation-delay:calc(var(--tipd, 0s) + var(--k) * 3.5s); will-change:opacity; }
+@keyframes boottip { 0% { opacity:0; } 1.50%, 11.00% { opacity:1; } 12.50%, 100% { opacity:0; } }
+</style>
+<script>
+// the wait's art px: a whole number of screen px, as big as a phone held upright or a desk lets it be
+(() => { const d = devicePixelRatio || 1, st = document.documentElement.style, fit = () => {
+  const n = Math.max(2, Math.min(Math.floor(innerWidth * d * .75 / 70), Math.floor(innerHeight * d * .55 / 70), Math.round(6 * d)));
+  st.setProperty("--bootpx", n / d + "px"); st.setProperty("--bootf", Math.max(1, Math.round(n * 2 / 3)) / d + "px"); st.setProperty("--bootu", Math.max(1, Math.round(n / 2)) / d + "px"); };
+  fit(); addEventListener("resize", fit); })();
+</script>
+</head>
+<body>
+<div id="boot"><div class="frame"><div class="win"><b class="sky"></b><b class="sun"></b><div class="cloud"><i></i></div><div class="far"><i></i></div><div class="near"><i></i></div><div class="cat"><i></i></div><div class="ground"><i></i></div></div></div><div class="bar"><div class="track"><b id="bootfill"><i></i></b><u></u></div></div><div class="chip"><span class="say" id="bootsay">Loading... 0%</span></div><div class="words"><p style="--k:0">The boar started it.</p><p style="--k:1">Every world has a door.</p><p style="--k:2">Hats are a personality.</p><p style="--k:3">The frog was here first.</p><p style="--k:4">Dig down. Regret it. Dig up.</p><p style="--k:5">Your pickaxe believes in you.</p><p style="--k:6">Step aside. No, further.</p><p style="--k:7">Now with 100% more bunnies.</p></div></div>
+<script>
+// (the mockup: the bar stands at 42%)
+document.getElementById("bootfill").style.transform = "translateX(calc(-36 * var(--bootpx)))"; document.getElementById("bootsay").textContent = "Loading... 42%";
+</script>
+</body></html>

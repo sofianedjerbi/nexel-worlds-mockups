@@ -34,6 +34,29 @@ figure { min-width:0; } img { max-width:100%; } .grid { grid-template-columns:re
 #edges .pick { border:3px solid #8fc06a; padding:12px 14px; margin-top:24px; } #edges .pick p { margin:0; }
 @media (max-width:700px) { .ec { grid-template-columns:repeat(2, minmax(0, 1fr)); } }
 </style>
+<div class="pair" id="bootday"><style>
+#bootday iframe { display:block; width:100%; height:520px; border:3px solid #5b3f36; border-radius:4px; background:#2b2320; }
+#bootday .strip { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; } #bootday .strip figure { margin:0; } #bootday .strip img { width:auto; max-width:none; border:0; border-radius:0; }
+#bootday .strip figcaption { font-size:18px; }
+</style>
+<h2>Latest changes: a day goes by in the loading screen</h2>
+<p>The owner: "can you add a nice daylight cycle into loading screen?" <b>Left:</b> today's loading screen. <b>Right:</b> the new one, live (the same page code, the bar held at 42%). In the little window a day goes round every 16 s: late morning, the sun sets behind the hills, dusk, night with stars, a moon and fireflies, dawn, and day again. The colours are the game's own (daylight.js: the dusk, night and dawn skies and the night's blue light). They change in 4 flat steps, never as a smooth fade. The sun and the moon move one art px at a time. It starts with the page and needs no script. Only opacity and position change, so a busy page does not stop it. Main-thread cost over 8 s on a phone: 10 ms (today 4 ms). The page grows by 2 KB gzipped. With "reduce motion" turned on, it stays at dusk.</p>
+<div class="ba">
+<figure><iframe src="bootday/today.html" title="today" loading="lazy"></iframe><span class="tag b">Before</span></figure>
+<figure><iframe src="bootday/new.html" title="new" loading="lazy"></iframe><span class="tag a">After</span></figure>
+</div>
+<p style="margin-top:12px"><b>Frames at 1:1</b> (desk, 6 screen px an art px), dawn to night, then the still dusk shown with reduce motion on, and today's for comparison.</p>
+<div class="strip">
+<figure><img src="bootday/new_dawn.png" alt="dawn"><figcaption>Dawn</figcaption></figure>
+<figure><img src="bootday/new_morning.png" alt="morning"><figcaption>Morning</figcaption></figure>
+<figure><img src="bootday/new_day.png" alt="day"><figcaption>Day</figcaption></figure>
+<figure><img src="bootday/new_dusk.png" alt="dusk"><figcaption>Dusk</figcaption></figure>
+<figure><img src="bootday/new_twilight.png" alt="twilight"><figcaption>Twilight (between two steps)</figcaption></figure>
+<figure><img src="bootday/new_night.png" alt="night"><figcaption>Night</figcaption></figure>
+<figure><img src="bootday/new_reduced.png" alt="reduce motion"><figcaption>Reduce motion: still dusk</figcaption></figure>
+<figure><img src="bootday/today_win.png" alt="today"><figcaption>Today</figcaption></figure>
+</div>
+</div>
 <div class="pair" id="sword2"><style>
 #sword2 .sc { overflow-x:auto; max-width:1296px; margin:8px auto 0; } #sword2 .sc img { width:auto; max-width:none; border-radius:0; }
 #sword2 .lk { max-width:1296px; margin:18px auto 0; } #sword2 h3 { font-size:24px; line-height:30px; font-weight:normal; margin:22px 0 4px; }
