@@ -49,26 +49,6 @@ figure { min-width:0; } img { max-width:100%; } .grid { grid-template-columns:re
 </style>
 <h2>Latest changes: a sword held naturally (pick a look: A, B or C)</h2>
 <p>The owner: "sword handling does not look natural at all.. player holding sword animations are bad." I recorded the real game first: a copy of your world on another port, the cat and the bunny holding a sword, desk at zoom 3 and phone (390x844, DPR 3), at full speed and at 1/4 speed. Every frame below is the real screen at 1:1, with no scaling.</p>
-<h3>What looks wrong today (seen on the real frames)</h3>
-<ul>
-<li><b>Standing, the sword points at the ground.</b> When you stand still you always aim at the tile in front of you, so the body takes the "aim down" pose. The blade hangs straight down from a paw in front of the belly, and its tip goes 6-8 art px below the feet. It looks like a stick stuck through the cat into the grass.</li>
-<li><b>Walking, it flips to upright.</b> The moment you move, the blade jumps up beside the face. When you stop, it drops back down. That is a 180° flip on every start and stop.</li>
-<li><b>Walking, it is rigid.</b> Across the walk cycle the sword only follows the 1 px bob. It never swings with the steps, so it reads as pasted on. Side on, the blade crosses the front of the face.</li>
-<li><b>Facing us or away, it is a flagpole.</b> The blade stands straight up beside the head, as tall as the head and ears together, and the hand ring sits low at the belly. Nothing between them looks like an arm carrying something.</li>
-<li><b>Jump:</b> the upright blade stays stiff through the whole arc. After landing it flips to pointing down.</li>
-<li><b>Attack:</b> it starts from the upright pose, swings back behind, then sweeps a white arc about 3 body-widths wide. The cut itself reads well. The weak part is everything around it.</li>
-<li><b>Size:</b> the blade (11 art px) is about 70% of the body's height. That is fine for a strike, but too much to carry up beside the head.</li>
-</ul>
-<p>Desk, 1/4 speed, cat: standing in the four facings, then aim up / ahead / down facing down, right and up, then the bunny standing.</p>
-<div class="sc"><img src="sword2_rec_still.png"></div>
-<p>Desk, 1/4 speed: walking right (each frame is about 13 ms of game time).</p>
-<div class="sc"><img src="sword2_rec_walk.png"></div>
-<p>Desk, 1/4 speed: jump to the right, then an attack facing down.</p>
-<div class="sc"><img src="sword2_rec_jump.png"></div>
-<div class="sc"><img src="sword2_rec_attack.png"></div>
-<p>Phone, full speed: walking right, then an attack facing down.</p>
-<div class="sc"><img src="sword2_rec_phone_walk.png"></div>
-<div class="sc"><img src="sword2_rec_phone_attack.png"></div>
 <h3>How small pixel games carry a sword</h3>
 <p>At 16-24 px tall, good games almost never hold the blade up in front of the face. There are three common ways. <b>Low at the side</b> (Hyper Light Drifter, Moonlighter, Secret of Mana): the hand at the hip, the blade angled down and forward, swaying with the steps. <b>On the shoulder</b> (many RPG idles): the hilt at the chest, the blade lying back over the shoulder. <b>Sheathed on the back</b> (Link to the Past, Minish Cap, Link's Awakening): no hand on it at all until you strike, and the strike draws it from over the shoulder. Below, each one is drawn from the game's own sword, hand and cat sheet, in whole art px. Each look keeps one pose whether you stand, aim or walk: the body aims, the sword does not flip.</p>
 <button onclick="const s=document.getElementById('sword2').style; s.setProperty('--k', s.getPropertyValue('--k') === '4' ? '1' : '4'); this.textContent = s.getPropertyValue('--k') === '4' ? 'speed: 1/4 (tap for full)' : 'speed: full (tap for 1/4)';">speed: full (tap for 1/4)</button>
@@ -177,6 +157,28 @@ figure { min-width:0; } img { max-width:100%; } .grid { grid-template-columns:re
 </div>
 <p style="margin:6px 0 0">the cat sheet: walk 8, attack 8, standing (rows down, up, right, left)</p><div class="sc"><img src="sword2_C_cat.png" style="width:1360px"></div></div>
 <p><b>My recommendation: A, low at the side.</b> It is the only one where you clearly <i>hold</i> the sword, which is what you asked for. The blade sways with each step. Its low guard is one step from the cut's wind-up, so the strike starts with no jump. Standing and aiming keep the same pose, so the up/down flip is gone. C is the cleanest look when not fighting, but nothing is held. B hides most of the blade behind the head at this size.</p>
+<details><summary>What looks wrong today: the real game recorded, frame by frame (open)</summary>
+<h3>What looks wrong today (seen on the real frames)</h3>
+<ul>
+<li><b>Standing, the sword points at the ground.</b> When you stand still you always aim at the tile in front of you, so the body takes the "aim down" pose. The blade hangs straight down from a paw in front of the belly, and its tip goes 6-8 art px below the feet. It looks like a stick stuck through the cat into the grass.</li>
+<li><b>Walking, it flips to upright.</b> The moment you move, the blade jumps up beside the face. When you stop, it drops back down. That is a 180° flip on every start and stop.</li>
+<li><b>Walking, it is rigid.</b> Across the walk cycle the sword only follows the 1 px bob. It never swings with the steps, so it reads as pasted on. Side on, the blade crosses the front of the face.</li>
+<li><b>Facing us or away, it is a flagpole.</b> The blade stands straight up beside the head, as tall as the head and ears together, and the hand ring sits low at the belly. Nothing between them looks like an arm carrying something.</li>
+<li><b>Jump:</b> the upright blade stays stiff through the whole arc. After landing it flips to pointing down.</li>
+<li><b>Attack:</b> it starts from the upright pose, swings back behind, then sweeps a white arc about 3 body-widths wide. The cut itself reads well. The weak part is everything around it.</li>
+<li><b>Size:</b> the blade (11 art px) is about 70% of the body's height. That is fine for a strike, but too much to carry up beside the head.</li>
+</ul>
+<p>Desk, 1/4 speed, cat: standing in the four facings, then aim up / ahead / down facing down, right and up, then the bunny standing.</p>
+<div class="sc"><img src="sword2_rec_still.png"></div>
+<p>Desk, 1/4 speed: walking right (each frame is about 13 ms of game time).</p>
+<div class="sc"><img src="sword2_rec_walk.png"></div>
+<p>Desk, 1/4 speed: jump to the right, then an attack facing down.</p>
+<div class="sc"><img src="sword2_rec_jump.png"></div>
+<div class="sc"><img src="sword2_rec_attack.png"></div>
+<p>Phone, full speed: walking right, then an attack facing down.</p>
+<div class="sc"><img src="sword2_rec_phone_walk.png"></div>
+<div class="sc"><img src="sword2_rec_phone_attack.png"></div>
+</details>
 </div>
 
 <div class="pair" id="flow"><h2>Water that flows, a level at a time</h2><p>Side cuts and a top view drawn in whole px (1 cell = 10 px, shown 1:1) in the game's own colours, the water moved by the rules to be built (4 steps a second). <b>Before:</b> water is a kind of ground on a whole tile. A hole dug beside a river stays dry, or (tilled soil) turns to water in one go, lying at the hole's floor with no level. <b>Now:</b> each block of a hole holds water at a level 1 to 7 (8: a source, as the sea, a river, a lake, or a can poured by a player). Water goes down first, then sideways a level less a tile. Shallow water is drawn thinner. Water with no source behind it dries up, and any block you put stops it (a dam).</p>
