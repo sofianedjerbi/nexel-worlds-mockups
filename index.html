@@ -70,12 +70,27 @@ figure { min-width:0; } img { max-width:100%; } .grid { grid-template-columns:re
 #sword2 button { font:inherit; font-size:18px; background:#5b3f36; color:#f3dfba; border:3px solid #8a6a4f; padding:4px 12px; margin-top:8px; }
 #sword2 ul { max-width:1296px; margin:6px auto 0; padding-left:22px; color:#c9b089; } #sword2 li { margin-top:4px; } #sword2 li b { color:#f3dfba; font-weight:normal; }
 </style>
-<h2>Latest changes: a sword held naturally (pick a look: A, B or C)</h2>
+<h2>Latest changes: a sword held naturally. Built: A, low at the side</h2>
 <p>The owner: "sword handling does not look natural at all.. player holding sword animations are bad." I recorded the real game first: a copy of your world on another port, the cat and the bunny holding a sword, desk at zoom 3 and phone (390x844, DPR 3), at full speed and at 1/4 speed. Every frame below is the real screen at 1:1, with no scaling.</p>
+<h3>Built: A. Before and after, recorded from the real game</h3>
+<p>Same world copy and same scenes, recorded again with the new code. Each pair is BEFORE, then AFTER, at 1:1. The sword is held at the hip with the blade down and forward. It stays in one pose whether you stand, aim or walk: the body aims, the sword does not. It sways a few degrees with each step, and the hand moves 1 px. The cut starts from this guard, and the jump carries the sword without flipping it. The spear gets the same treatment: one pose, upright like a staff, swaying with the steps.</p>
+<p>Desk, 1/4 speed, cat: standing in four facings, then aim up / ahead / down facing down, right and up, then the bunny standing. BEFORE, then AFTER.</p>
+<div class="sc"><img src="sword2_rec_still.png"></div><div class="sc"><img src="sword2_after_still.png"></div>
+<p>Desk, 1/4 speed: walking right. BEFORE, then AFTER.</p>
+<div class="sc"><img src="sword2_rec_walk.png"></div><div class="sc"><img src="sword2_after_walk.png"></div>
+<p>Desk, 1/4 speed: jump right. BEFORE, then AFTER.</p>
+<div class="sc"><img src="sword2_rec_jump.png"></div><div class="sc"><img src="sword2_after_jump.png"></div>
+<p>Desk, 1/4 speed: attack facing down. BEFORE, then AFTER.</p>
+<div class="sc"><img src="sword2_rec_attack.png"></div><div class="sc"><img src="sword2_after_attack.png"></div>
+<p>Phone, full speed: walking right, then an attack facing down. BEFORE, then AFTER.</p>
+<div class="sc"><img src="sword2_rec_phone_walk.png"></div><div class="sc"><img src="sword2_after_phone_walk.png"></div>
+<div class="sc"><img src="sword2_rec_phone_attack.png"></div><div class="sc"><img src="sword2_after_phone_attack.png"></div>
+<p>Phone, 1/4 speed: walking down. AFTER.</p>
+<div class="sc"><img src="sword2_after_phone_walk25.png"></div>
 <h3>How small pixel games carry a sword</h3>
 <p>At 16-24 px tall, good games almost never hold the blade up in front of the face. There are three common ways. <b>Low at the side</b> (Hyper Light Drifter, Moonlighter, Secret of Mana): the hand at the hip, the blade angled down and forward, swaying with the steps. <b>On the shoulder</b> (many RPG idles): the hilt at the chest, the blade lying back over the shoulder. <b>Sheathed on the back</b> (Link to the Past, Minish Cap, Link's Awakening): no hand on it at all until you strike, and the strike draws it from over the shoulder. Below, each one is drawn from the game's own sword, hand and cat sheet, in whole art px. Each look keeps one pose whether you stand, aim or walk: the body aims, the sword does not flip.</p>
 <button onclick="const s=document.getElementById('sword2').style; s.setProperty('--k', s.getPropertyValue('--k') === '4' ? '1' : '4'); this.textContent = s.getPropertyValue('--k') === '4' ? 'speed: 1/4 (tap for full)' : 'speed: full (tap for 1/4)';">speed: full (tap for 1/4)</button>
-<div class="lk"><h3>Today (as built)</h3><p>Walking: upright beside the head and rigid. Standing: the real game shows it pointing at the ground (aim down).</p>
+<div class="lk"><h3>Before (as it was)</h3><p>Walking: upright beside the head and rigid. Standing: the real game shows it pointing at the ground (aim down).</p>
 <p style="margin:6px 0 0">cat, walk: down, up, right, left</p><div class="an">
 <div style="background-image:url(sword2_today_cat.png);background-position-y:-0px"></div>
 <div style="background-image:url(sword2_today_cat.png);background-position-y:-80px"></div>
@@ -179,9 +194,9 @@ figure { min-width:0; } img { max-width:100%; } .grid { grid-template-columns:re
 <div style="background-image:url(sword2_C_bunny.png);background-position-y:-240px"></div>
 </div>
 <p style="margin:6px 0 0">the cat sheet: walk 8, attack 8, standing (rows down, up, right, left)</p><div class="sc"><img src="sword2_C_cat.png" style="width:1360px"></div></div>
-<p><b>My recommendation: A, low at the side.</b> It is the only one where you clearly <i>hold</i> the sword, which is what you asked for. The blade sways with each step. Its low guard is one step from the cut's wind-up, so the strike starts with no jump. Standing and aiming keep the same pose, so the up/down flip is gone. C is the cleanest look when not fighting, but nothing is held. B hides most of the blade behind the head at this size.</p>
-<details><summary>What looks wrong today: the real game recorded, frame by frame (open)</summary>
-<h3>What looks wrong today (seen on the real frames)</h3>
+<p><b>Picked by the owner and built: A.</b> My reason for recommending it: It is the only one where you clearly <i>hold</i> the sword, which is what you asked for. The blade sways with each step. Its low guard is one step from the cut's wind-up, so the strike starts with no jump. Standing and aiming keep the same pose, so the up/down flip is gone. C is the cleanest look when not fighting, but nothing is held. B hides most of the blade behind the head at this size.</p>
+<details><summary>What looked wrong before: the real game recorded, frame by frame (open)</summary>
+<h3>What looked wrong before (seen on the real frames)</h3>
 <ul>
 <li><b>Standing, the sword points at the ground.</b> When you stand still you always aim at the tile in front of you, so the body takes the "aim down" pose. The blade hangs straight down from a paw in front of the belly, and its tip goes 6-8 art px below the feet. It looks like a stick stuck through the cat into the grass.</li>
 <li><b>Walking, it flips to upright.</b> The moment you move, the blade jumps up beside the face. When you stop, it drops back down. That is a 180° flip on every start and stop.</li>
